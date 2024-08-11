@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 import pandas as pd
 
+# Screen Setup
 screen = Screen()
 screen.title("Districts of Bangladesh")
 image = "64Districts.gif"
@@ -13,9 +14,11 @@ all_districts = districts_data.district.tolist()
 guessed_districts = []
 
 while len(guessed_districts) < 64:
+    # take the input
     answer_district = screen.textinput(title=f"{len(guessed_districts)}/64 Districts Correct",
                                        prompt="What's another district's name?").title()
 
+    # Exit functionality
     if answer_district == "Exit":
         missing_districts = []
         for district in all_districts:
@@ -25,6 +28,7 @@ while len(guessed_districts) < 64:
         data.to_csv("districts_to_learn.csv")
         break
 
+    # move the district name to the location on the map    
     if answer_district in all_districts:
         guessed_districts.append(answer_district)
         # move the name of the state to the location
