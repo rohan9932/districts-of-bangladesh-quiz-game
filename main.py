@@ -20,10 +20,7 @@ while len(guessed_districts) < 64:
 
     # Exit functionality
     if answer_district == "Exit":
-        missing_districts = []
-        for district in all_districts:
-            if district not in guessed_districts:
-                missing_districts.append(district)
+        missing_districts = [district for district in all_districts if district not in guessed_districts]
         data = pd.DataFrame(missing_districts)
         data.to_csv("districts_to_learn.csv")
         break
